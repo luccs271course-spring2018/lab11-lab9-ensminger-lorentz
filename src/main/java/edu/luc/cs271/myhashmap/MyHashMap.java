@@ -99,11 +99,13 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
   }
 
+//this is Ben's from here on out 
+
   @Override
   public void clear() {
-    // TODO clear each chain
-
-
+    for (int i = 0; i < tableSize; i++) {
+      table.set(i,new LinkedList<>());
+    }
   }
 
   /** The resulting keySet is not "backed" by the Map, so we keep it unmodifiable. */
@@ -111,7 +113,19 @@ public class MyHashMap<K, V> implements Map<K, V> {
   public Set<K> keySet() {
     final Set<K> result = new HashSet<>();
     // TODO populate the set
-
+	for(int i = 0; i < tableSize; i++){
+		while(table.get(i).hasNext()){
+		<T> temp = table.get(i).next();
+			if(result.contains(temp){
+				int curVal = result.get(temp);
+				result.put(temp, curVal + 1);
+			}
+			else{
+				result.put(temp, 1);
+			}
+		}
+	}	
+}
 
     return Collections.unmodifiableSet(result);
   }
