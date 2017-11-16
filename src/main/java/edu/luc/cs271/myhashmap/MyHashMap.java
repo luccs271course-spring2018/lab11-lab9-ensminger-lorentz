@@ -100,9 +100,17 @@ public class MyHashMap<K, V> implements Map<K, V> {
   public V put(final K key, final V value) {
     // TODO follow basic approach of remove below (this will be similar)
     final int index = calculateIndex(key);
-
-
-    return null;
+    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
+    while(iter.hasNext()){
+      final Entry<K, V> entry = iter.next();
+      if(entry.getKey().equals(key)){
+        if(entry.getValue != null){
+          return entry.getValue;
+        }
+        else{
+          return null;
+        }
+        entry = Entry<key, value>;
   }
 
   @Override
