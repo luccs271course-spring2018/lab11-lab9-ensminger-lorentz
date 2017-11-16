@@ -46,8 +46,13 @@ public class MyHashMap<K, V> implements Map<K, V> {
   public boolean containsKey(final Object key) {
     // TODO follow basic approach of remove below (though this will be much simpler)
     final int index = calculateIndex(key);
-
-
+    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
+    while(iter.hasNext()){
+      final Entry<K, V> entry = iter.next();
+      if(entry.getKey().equals(key)){
+        return true;
+      }
+    }
     return false;
   }
 
