@@ -44,7 +44,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
   @Override
   public boolean containsKey(final Object key) {
-    // TODO follow basic approach of remove below (though this will be much simpler)
+    // done follow basic approach of remove below (though this will be much simpler)
     final int index = calculateIndex(key);
     final Iterator<Entry<K, V>> iter = table.get(index).iterator();
     while(iter.hasNext()){
@@ -58,7 +58,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
   @Override
   public boolean containsValue(final Object value) {
-    // TODO follow basic approach of remove below (though this will be much simpler)
+    // done follow basic approach of remove below (though this will be much simpler)
     //final int index = calculateIndex(key);
     // final Iterator<Entry<K, V>> iter = table.get(index).iterator();
     // while (iter.hasNext()) {
@@ -83,11 +83,17 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
   @Override
   public V get(final Object key) {
-    // TODO follow basic approach of remove below (though this will be simpler)
+    // done follow basic approach of remove below (though this will be simpler)
     final int index = calculateIndex(key);
-
-
-    return null;
+    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
+    while(iter.hasNext()){
+      final Entry<K, V> entry = iter.next();
+      if(entry.getKey().equals(key)){
+        return entry.getValue();
+      }
+      else{
+        return null;
+      }
   }
 
   @Override
