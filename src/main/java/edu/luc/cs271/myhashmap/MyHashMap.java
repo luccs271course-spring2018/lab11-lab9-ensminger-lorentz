@@ -72,6 +72,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
     //   }
     // }
     // return null;
+
     final int index = calculateIndex(value);
     final Iterator<Entry<K, V>> iter = table.get(index).iterator();
     while(iter.hasNext()){
@@ -116,8 +117,8 @@ public class MyHashMap<K, V> implements Map<K, V> {
   }
 
   @Override
-  
-  
+
+
   public V remove(final Object key) {
     final int index = calculateIndex(key);
     final Iterator<Entry<K, V>> iter = table.get(index).iterator();
@@ -135,9 +136,14 @@ public class MyHashMap<K, V> implements Map<K, V> {
   @Override
   public void putAll(final Map<? extends K, ? extends V> m) {
     // TODO add each entry in m's entrySet
+    final int index = calculateIndex(key);
+    final Iterator<Entry<K, V>> iter = m.get(index).iterator();
+    while (iter.hasNext()) {
+      final Entry<K, V> entry = iter.next();
+      this.put(entry);
+      }
+    }
 
-
-  }
 
 //this is Ben's from here on out
 
