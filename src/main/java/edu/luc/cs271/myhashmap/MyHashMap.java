@@ -31,8 +31,10 @@ public class MyHashMap<K, V> implements Map<K, V> {
   @Override
   public int size() {
     // TODO add the sizes of all the chains
-    int result = 0;
-
+      int result = 0;
+    for(int i = 0; i < tableSize; i++){
+       result = result + i.size();
+    }
 
     return result;
   }
