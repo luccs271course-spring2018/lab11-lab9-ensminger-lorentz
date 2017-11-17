@@ -98,6 +98,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
         return null;
       }
   }
+}
 
   @Override
   public V put(final K key, final V value) {
@@ -113,8 +114,11 @@ public class MyHashMap<K, V> implements Map<K, V> {
         else{
           return null;
         }
-        entry = Entry<key, value>;
+        //commented out to compile
+        //entry = map.Entry<key, value>;
   }
+}
+}
 
   @Override
 
@@ -164,7 +168,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
         final Iterator<Entry<K, V>> iter = table.get(i).iterator();
 		    while(iter.hasNext()){
 		        Set<Entry<K,V>> tempKey = iter.next();
-            result.add(tempKey.getKey();
+            result.add(tempKey.getKey());
           }
         }
 
@@ -206,9 +210,10 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
     return Collections.unmodifiableSet(result);
   }
+}
 
   @Override
-  public String toString() {
+  public String toString(){
     // TODO return the string representation of the underlying table
 
     for(int i = 0; i < tableSize; i++){
@@ -220,6 +225,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
     return "";
   }
+}
 
   public boolean equals(final Object that) {
     if (this == that) {
