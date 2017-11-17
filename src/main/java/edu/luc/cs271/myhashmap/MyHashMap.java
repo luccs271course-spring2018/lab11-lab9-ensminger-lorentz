@@ -33,7 +33,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
     // TODO add the sizes of all the chains
       int result = 0;
     for(int i = 0; i < DEFAULT_TABLE_SIZE; i++){
-      int chainSize = i.size();
+      int chainSize = table.get(i).size();
        result = result + chainSize;
     }
 
@@ -108,9 +108,9 @@ public class MyHashMap<K, V> implements Map<K, V> {
     while(iter.hasNext()){
       final Entry<K, V> entry = iter.next();
       if(entry.getKey().equals(key)){
-        
-        if(entry.getValue != null){
-          return entry.getValue;
+
+        if(entry.getValue() != null){
+          return entry.getValue();
         }
         else{
           return null;
@@ -141,13 +141,14 @@ public class MyHashMap<K, V> implements Map<K, V> {
   @Override
   public void putAll(final Map<? extends K, ? extends V> m) {
     // TODO add each entry in m's entrySet
-    //final int index = calculateIndex(key);
-    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
+    for(int i = 0; i < DEFAULT_TABLE_SIZE; i++){
+    final Iterator<Entry<K, V>> iter = table.get(i).iterator();
     while (iter.hasNext()) {
-      final Entry<K, V> entry = iter.next();
-      this.put(entry);
+      Entry<K, V> entry = iter.next();
+      this.put(entry.getKey(),entry.getValue());
       }
     }
+  }
 
 
 //this is Ben's from here on out
@@ -168,7 +169,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
 	  for(int i = 0; i < DEFAULT_TABLE_SIZE; i++){
         final Iterator<Entry<K, V>> iter = table.get(i).iterator();
 		    while(iter.hasNext()){
-		        Set<Entry<K,V>> tempKey = iter.next();
+		        Entry<Entry<K,V>> tempKey = iter.next();
             result.add(tempKey.getKey());
           }
         }
