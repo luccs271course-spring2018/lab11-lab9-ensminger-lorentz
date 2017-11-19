@@ -49,50 +49,52 @@ public class MyHashMap<K, V> implements Map<K, V> {
   public boolean containsKey(final Object key) {
     // done follow basic approach of remove below (though this will be much simpler)
     final int index = calculateIndex(key);
+    boolean value = false;
     final Iterator<Entry<K, V>> iter = table.get(index).iterator();
     while (iter.hasNext()) {
       final Entry<K, V> entry = iter.next();
       if (entry.getKey().equals(key)) {
-        return true;
+        value = true;
       }
     }
-    return false;
+    return value;
   }
 
   @Override
   public boolean containsValue(final Object value) {
 
     final int index = calculateIndex(value);
+    boolean value = false;
     final Iterator<Entry<K, V>> iter = table.get(index).iterator();
     while (iter.hasNext()) {
       final Entry<K, V> entry = iter.next();
       if (entry.getValue().equals(value)) {
-        return true;
+        value = true;
       }
     }
-    return false;
+    return value;
   }
 
   @Override
   public V get(final Object key) {
     // done follow basic approach of remove below (though this will be simpler)
     final int index = calculateIndex(key);
+    V value = null;
     final Iterator<Entry<K, V>> iter = table.get(index).iterator();
     while (iter.hasNext()) {
       final Entry<K, V> entry = iter.next();
       if (entry.getKey().equals(key)) {
-        return entry.getValue();
-      } else {
-        return null;
-      }
+        value = entry.getValue();
+      } 
     }
-    return null;
+    return value;
   }
 
   @Override
   public V put(final K key, final V value) {
     // TODO follow basic approach of remove below (this will be similar)
     final int index = calculateIndex(key);
+    V value = null;
     final Iterator<Entry<K, V>> iter = table.get(index).iterator();
     while (iter.hasNext()) {
       final Entry<K, V> entry = iter.next();
@@ -100,16 +102,15 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
         if (entry.getValue() != null) {
           entry.setValue(value);
-          return entry.getValue();
+          value = entry.getValue();
         } else {
           entry.setValue(value);
-          return null;
         }
         // commented out to compile
         // entry = map.Entry<key, value>;
       }
     }
-    return null;
+    return value;
   }
 
   @Override
