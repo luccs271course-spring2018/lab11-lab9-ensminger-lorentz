@@ -64,15 +64,15 @@ public class MyHashMap<K, V> implements Map<K, V> {
   public boolean containsValue(final Object value) {
 
     final int index = calculateIndex(value);
-    boolean value = false;
+    boolean value1 = false;
     final Iterator<Entry<K, V>> iter = table.get(index).iterator();
     while (iter.hasNext()) {
       final Entry<K, V> entry = iter.next();
       if (entry.getValue().equals(value)) {
-        value = true;
+        value1 = true;
       }
     }
-    return value;
+    return value1;
   }
 
   @Override
@@ -94,7 +94,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
   public V put(final K key, final V value) {
     // TODO follow basic approach of remove below (this will be similar)
     final int index = calculateIndex(key);
-    V value = null;
+    V value1 = null;
     final Iterator<Entry<K, V>> iter = table.get(index).iterator();
     while (iter.hasNext()) {
       final Entry<K, V> entry = iter.next();
@@ -102,7 +102,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
         if (entry.getValue() != null) {
           entry.setValue(value);
-          value = entry.getValue();
+          value1 = entry.getValue();
         } else {
           entry.setValue(value);
         }
@@ -110,7 +110,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
         // entry = map.Entry<key, value>;
       }
     }
-    return value;
+    return value1;
   }
 
   @Override
