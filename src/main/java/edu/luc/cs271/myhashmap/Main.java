@@ -5,6 +5,7 @@ import java.util.*;
 public class Main {
 
   public static void main(final String[] args) throws InterruptedException {
+
     // set up the scanner so that it separates words based on space and punctuation
     final Scanner input = new Scanner(System.in).useDelimiter("[^\\p{Alnum}]+");
     // TODO measure the performance for MyHashMap, HashMap, and TreeMap several times each!
