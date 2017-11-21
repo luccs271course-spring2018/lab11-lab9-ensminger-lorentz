@@ -49,66 +49,46 @@ public class MyHashMap<K, V> implements Map<K, V> {
   public boolean containsKey(final Object key) {
     // done follow basic approach of remove below (though this will be much simpler)
     final int index = calculateIndex(key);
-<<<<<<< HEAD
     // debugging shows that put method is not working
     System.out.println(key.toString());
     System.out.println(table.get(index).toString());
     // final Iterator<Entry<K, V>> iter = table.get(index).iterator();
     for (Entry<K, V> entry : table.get(index)) {
-=======
-    boolean value = false;
-    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
-    while (iter.hasNext()) {
-      final Entry<K, V> entry = iter.next();
->>>>>>> 6b040dc9a8a45877afbe617227b19448eba9d3b6
       if (entry.getKey().equals(key)) {
-        value = true;
+        return true;
       }
     }
-<<<<<<< HEAD
 
     return false;
-=======
-    return value;
->>>>>>> 6b040dc9a8a45877afbe617227b19448eba9d3b6
   }
 
   @Override
   public boolean containsValue(final Object value) {
 
-<<<<<<< HEAD
     for (List<Entry<K, V>> index : table) {
       for (Entry<K, V> entry : index) {
         if (entry.getValue().equals(value)) {
           return true;
         }
-=======
-    final int index = calculateIndex(value);
-    boolean value1 = false;
-    final Iterator<Entry<K, V>> iter = table.get(index).iterator();
-    while (iter.hasNext()) {
-      final Entry<K, V> entry = iter.next();
-      if (entry.getValue().equals(value)) {
-        value1 = true;
->>>>>>> 6b040dc9a8a45877afbe617227b19448eba9d3b6
       }
     }
-    return value1;
+    return false;
   }
 
   @Override
   public V get(final Object key) {
     // done follow basic approach of remove below (though this will be simpler)
     final int index = calculateIndex(key);
-    V value = null;
     final Iterator<Entry<K, V>> iter = table.get(index).iterator();
     while (iter.hasNext()) {
       final Entry<K, V> entry = iter.next();
       if (entry.getKey().equals(key)) {
-        value = entry.getValue();
+        return entry.getValue();
+      } else {
+        return null;
       }
     }
-    return value;
+    return null;
   }
 
   @Override
